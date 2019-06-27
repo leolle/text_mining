@@ -3,8 +3,8 @@
 
 import sys
 
-reload(sys)
-sys.setdefaultencoding('utf-8')
+# reload(sys)
+# sys.setdefaultencoding('utf-8')
 
 import requests
 import time
@@ -92,7 +92,7 @@ class weixin_spider:
         time.sleep(2)
 
         # 使用webdriver.PhantomJS
-        driver = webdriver.PhantomJS(executable_path='/usr/local/Cellar/phantomjs/2.1.1/bin/phantomjs',
+        driver = webdriver.PhantomJS(executable_path='phantomjs-2.1.1-linux-x86_64/bin/phantomjs',
                                      service_args=['--ignore-ssl-errors=true', '--ssl-protocol=tlsv1'])
         driver.get(catchUrlIndex)
         article1 = driver.page_source
@@ -145,7 +145,7 @@ class weixin_spider:
 
     def insert_save(self, url,name,listaText):
         self.config = {
-             'host': 'host',
+             'host': '',
             'port': 3306,
             'user': 'user',
             'passwd': 'pwd',
