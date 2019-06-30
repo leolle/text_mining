@@ -76,6 +76,6 @@ if __name__ == '__main__':
     proxy_new.extend(proxy_old)
     proxy_new = list(set(proxy_new))
     proxy = validate_ip(proxy_new)
-    with open('ip.txt', 'w') as fp:
+    with open('ip.txt', 'a') as fp:
         for i in proxy:
             fp.write(i + '\n')
