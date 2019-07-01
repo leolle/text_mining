@@ -37,14 +37,14 @@ class weixin_spider:
     "Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; fr) Presto/2.9.168 Version/11.52",
 ]
 
-    
+
 
     # 入口函数
     def run(self):
         # self.sublist = self.getSubList()
         self.sublist = [['ULFINANCE', 'ULFINANCE']]
         sublen = len(self.sublist)
-        
+
         for i in tqdm(range(0,sublen)):
             self.ename =  self.sublist[i][0].strip()
             self.name =  self.sublist[i][1].strip()
