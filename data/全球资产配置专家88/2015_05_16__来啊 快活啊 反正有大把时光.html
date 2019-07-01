@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <title>来啊 快活啊 反正有大把时光</title>
+    <link rel="stylesheet" type="text/css" href="//res.wx.qq.com/mmbizwap/zh_CN/htmledition/style/video-js.min42f400.css" />
+    <style>
+        html,body{position:relative;height:100%;}
+        body{line-height:1.6;font-family:"Helvetica Neue",Helvetica,"Microsoft YaHei",Arial,Tahoma,sans-serif;}
+        body{background:#000000;color:#fff;text-align:center;margin:0;}
+        video{width:100%;height:100%}
+    </style>
+</head>
+<body>
+
+    <video id="video" class="video-js vjs-default-skin" >
+        <source src="http://114.80.28.19/vweixinp.tc.qq.com/1007_81acb8b6b71e4470a0c16879ae553b3a.f10.mp4?vkey=99F03E163D4F09E3E4E8EF1B8EE7A73C158375E802292BCAC5CC313D1754EC840F668B8CE29C829A5FD5D18D5228EE3FE186B5CF336BEEDEC4A483B0DA525EE2ED8D9A0739A05D7ADA1E91421B442FFCA5F64852F534AD46&amp;sha=0" type="video/mp4" />
+    </video>
+
+<script type="text/javascript" src="//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/lib/video42f400.js"></script>
+<script type="text/javascript">
+
+if (/MSIE (\d+)/.test(navigator.userAgent)) {
+    if (RegExp.$1 < 9) {
+        location.href = 'https://mp.weixin.qq.com/cgi-bin/readtemplate?t=home/browser_upgrade_tmpl'
+    }
+}
+videojs.options.flash.swf = '/mp/zh_CN/htmledition/swf/video-js.swf';
+var Player = videojs('video',{
+    controls: true,
+    autoplay: true,
+    preload: 'auto',
+    width: '100%',
+    height: '100%'
+}).ready(function(){
+    this.play();
+    if( !document.createElement('video').canPlayType ){
+        this.src([
+            {type: 'video/x-flv', src: 'http://114.80.28.19/vweixinp.tc.qq.com/1007_81acb8b6b71e4470a0c16879ae553b3a.f10.mp4?vkey=99F03E163D4F09E3E4E8EF1B8EE7A73C158375E802292BCAC5CC313D1754EC840F668B8CE29C829A5FD5D18D5228EE3FE186B5CF336BEEDEC4A483B0DA525EE2ED8D9A0739A05D7ADA1E91421B442FFCA5F64852F534AD46&amp;sha=0' }
+        ]);
+    }
+});
+
+function htmlDecode(str){
+    return str
+          .replace(/&#39;/g, '\'')
+          .replace(/<br\s*(\/)?\s*>/g, '\n')
+          .replace(/&nbsp;/g, ' ')
+          .replace(/&lt;/g, '<')
+          .replace(/&gt;/g, '>')
+          .replace(/&quot;/g, '"')
+          .replace(/&amp;/g, '&');
+};
+          
+function onBridgeReady(){
+
+    var appId  = '',
+        imgUrl = "http://mmbiz.qpic.cn/mmbiz/jESibgibQYJMBRzpbpZMTVoD6V9CLeetRU0hiaGQxTNiadaXFuoHBO6TrwfeCK4qgpMEU5XicTsjibS3pnBObwhE0coQ/0?wx_fmt=jpeg",
+        link   = "",
+        title  = htmlDecode("来啊&nbsp;快活啊&nbsp;反正有大把时光"),
+        desc   = htmlDecode("来啊&nbsp;快活啊&nbsp;反正有大把时光&nbsp;<br/>来啊&nbsp;爱情啊&nbsp;反正有大把愚妄&nbsp;<br/>来啊&nbsp;流浪啊&nbsp;反正有大把方向&nbsp;<br/>来啊&nbsp;造作啊&nbsp;反正有大把风光&nbsp;!"),
+        fakeid = "";
+        desc = desc || link;	
+
+                
+      WeixinJSBridge.on('menu:share:appmessage', function(argv){
+       
+                    WeixinJSBridge.invoke('sendAppMessage',{
+                                          "appid"      : appId,
+                                          "img_url"    : imgUrl,
+                                          "img_width"  : "640",
+                                          "img_height" : "640",
+                                          "link"       : link,
+                                          "desc"       : desc,
+                                          "title"      : title
+                    }, function(res) {
+                    });
+                });
+                
+      WeixinJSBridge.on('menu:share:timeline', function(argv){
+       
+                    WeixinJSBridge.invoke('shareTimeline',{
+                                          "img_url"    : imgUrl,
+                                          "img_width"  : "640",
+                                          "img_height" : "640",
+                                          "link"       : link,
+                                          "desc"       : desc,
+                                          "title"      : title
+                    }, function(res) {
+                    });
+        
+                });
+                
+        WeixinJSBridge.on('menu:general:share', function(argv){
+                argv.generalShare({
+                                    "appid"      : appId,
+                                    "img_url"    : imgUrl,
+                                    "img_width"  : "640",
+                                    "img_height" : "640",
+                                    "link"       : link,
+                                    "desc"       : desc,
+                                    "title"      : title
+                }, function(res){
+                });
+        });
+
+}
+
+if (typeof WeixinJSBridge == "undefined"){
+  if(document.addEventListener){
+    document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+  } else if(document.attachEvent){
+    document.attachEvent('WeixinJSBridgeReady'   , onBridgeReady);
+    document.attachEvent('onWeixinJSBridgeReady' , onBridgeReady);
+  }
+}else{
+  onBridgeReady();
+}
+</script>
+</body>
+</html>

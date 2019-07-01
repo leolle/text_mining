@@ -97,10 +97,13 @@ with open('ip.txt') as fp:
 ls_proxy_pool = []
 for string in proxy_pool:
     ip = string.strip().split("\t")
-    if ip[2] == 'HTTP':
-        proxy_host = ip[0]+":"+ip[1]
-        ls_proxy_pool.append(proxy_host)
-
+    if len(ip) > 1:
+        try:
+            if ip[2] == 'HTTP':
+                proxy_host = ip[0]+":"+ip[1]
+                ls_proxy_pool.append(proxy_host)
+        except:
+            continue
 
 # In[117]:
 
@@ -205,10 +208,8 @@ def get_html(url,count = 1):
         print('Error Occurred', e.args)#打印错误信息
         proxy = get_proxy() #若失败，更换代理
         count += 1 #请求次数+1
-        time.sleep(2)
+        time.sleep(5)
         return get_html(url, count) #重试
-    
-    
 
 
 # In[92]:
@@ -270,12 +271,11 @@ for au in tqdm(ls_kol):
             history = ws_api.get_gzh_article_by_history(au)
         except:
             pass
-            print('failed to fetch historical articles.')
+            print('continue on captcha')
         else:
             break
-        time.sleep(2)
-        
-    # get articles 
+        time.sleep(5)
+    # get articles
     if len(history) == 0:
         continue
     # make directory
@@ -301,11 +301,10 @@ for au in tqdm(ls_kol):
                 # export article
                 with open(fpath, 'w') as fp:
                     fp.write(article)
-                
         else:
             continue
-        time.sleep(2)    
-    time.sleep(2)
+        time.sleep(5)
+    time.sleep(10)
 
 
 # In[121]:
