@@ -42,7 +42,7 @@ def get_proxy_ip(number_of_pages=5):
 
 def validate_ip(proxy):
     http_url = "http://ip111.cn"
-    https_url = "https://myip.cx/"
+    https_url = "https://www.ipip.net/ip.html"
     # socket.setdefaulttimeout(3)
     # for i in tqdm(range(0, len(proxy))):
 
@@ -57,7 +57,7 @@ def validate_ip(proxy):
                 proxy_host = "https://"+ip[0]+":"+ip[1]
                 proxy_temp = {"https": proxy_host}
                 url = https_url
-            res = requests.get(url, proxies=proxy_temp, timeout=0.5)
+            res = requests.get(url, proxies=proxy_temp, timeout=1)
             print(string)
             return True
         except Exception as e:
