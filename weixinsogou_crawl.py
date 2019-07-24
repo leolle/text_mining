@@ -303,8 +303,8 @@ for au in tqdm(ls_kol):
                     fp.write(article)
         else:
             continue
-        time.sleep(5)
-    time.sleep(10)
+        time.sleep(3)
+    time.sleep(15)
 
 
 # In[121]:
