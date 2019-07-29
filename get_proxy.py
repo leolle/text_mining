@@ -6,7 +6,7 @@ import socket
 from tqdm import tqdm
 import argparse
 
-User_Agent = 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0'
+User_Agent = "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0; Acoo Browser; SLCC1; .NET CLR 2.0.50727; Media Center PC 5.0; .NET CLR 3.0.04506)"
 header = {}
 header['User-Agent'] = User_Agent
 
@@ -43,8 +43,8 @@ def get_proxy_ip(base_url, number_of_pages=5):
 '''
 http_url = "http://ip111.cn"
 https_url = "https://www.ipip.net/ip.html"
-ano_url = 'https://www.xicidaili.com/nt/'
-com_url = 'https://www.xicidaili.com/nn/'
+ano_url = "https://www.xicidaili.com/nt/"
+com_url = "http://www.xicidaili.com/nn/"
 
 def ping(string):
     print('start ping %s'%string)
@@ -74,6 +74,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-n', '--number', type=int, default=5)
     args = parser.parse_args()
+    print('number of pages %s'%args.number)
     proxy_new = get_proxy_ip(com_url, args.number)
     proxy_new.extend(get_proxy_ip(ano_url, args.number))
     print(len(proxy_new))
